@@ -18,6 +18,10 @@ echo github.com/lhost > REPO
 ~/bin/github-pull-all-repositories.pl
 ```
 
+### git-pull-repositories.sh
+
+Simple script to pull all already-cloned repositores in current directory. Search for all .git subdirectories up to level 4.
+
 ### bootstrap.sh
 
 Simle installation script
