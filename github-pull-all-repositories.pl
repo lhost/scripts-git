@@ -1,14 +1,14 @@
 #!/usr/bin/perl -w
 
 #
-# gitolite-pull-all-repositories.pl
+# github-pull-all-repositories.pl
 #
 # Developed by Lubomir Host 'rajo' <lubomir.host@gmail.com>
 # Licensed under terms of GNU General Public License.
 # All rights reserved.
 #
 # Changelog:
-# 2014-08-08 - created
+# 2016-10-24 - created
 #
 
 use strict;
