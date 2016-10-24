@@ -1,7 +1,10 @@
 #!/bin/sh -x
 
 if [ ! -d .git ]; then
-	git clone https://github.com/lhost/scripts-git && cd scripts-git && ./bootstrap.sh
+	git clone https://github.com/lhost/scripts-git \
+		&& cd scripts-git \
+		&& ./bootstrap.sh
+	exit 0
 fi
 
 cwd=`pwd`
