@@ -37,4 +37,8 @@ cd scripts-git
 ./bootstrap.sh
 ```
 
+## Installation with shell oneliner
 
+```bash
+curl -o - https://raw.githubusercontent.com/lhost/scripts-git/master/bootstrap.sh | sh
+```
