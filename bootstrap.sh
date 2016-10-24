@@ -15,6 +15,6 @@ fi
 
 # create symlink for every Perl script in repository
 cd $HOME/bin
-for i in $cwd/*.pl; do
+for i in $cwd/git*.pl $cwd/git*.sh; do
 	ln -s $i
 done
