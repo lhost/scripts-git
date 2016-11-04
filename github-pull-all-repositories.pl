@@ -20,6 +20,11 @@ use Cwd;
 
 $| = 1;
 
+my %protocol_map = (
+	'/'	=> 'HTTPS',
+	':'	=> 'SSH',
+);
+
 my $git_repo = shift;
 
 unless ($git_repo) {
@@ -37,14 +42,21 @@ unless ($git_repo) {
 	}
 }
 
-$git_repo =~ s/^.*?([^\/]+)$/github.com\/$1/g; # take the last part of repo URL
+$git_repo =~ s/^.*?([\/:])([^\/:]+)$/github.com$1$2/g; # take the last part of repo URL
 
 my $github_user;
-if ($git_repo =~ m/([^\/]+)$/) {
-	$github_user = $1;
+my $protocol;
+# Server name and username can be separated by '/' and ':'
+# if they are separated by '/' -> clone over https://
+# if they are separated by ':' -> clone over ssh://
+if ($git_repo =~ m/([\/:])([^\/:]+)$/) {
+	my $protocol_code = $1;
+	#warn "protocol_code=$protocol_code";
+	$protocol = $protocol_map{$protocol_code} || 'HTTPS';
+	$github_user = $2;
 }
 
-print "REPO = '$git_repo', USER = '$github_user'\n";
+print "REPO = '$git_repo', USER = '$github_user', PROTOCOL=$protocol\n";
 
 unless ($git_repo) {
 	print STDERR "Usage: $0 <github_username>\n";
@@ -72,7 +84,7 @@ my $ginfo = from_json($git_json);
 my $cwd = getcwd();
 
 foreach my $r (@{ $ginfo }) {
-	my $repo = $r->{clone_url};
+	my $repo = ($protocol eq 'SSH') ? $r->{ssh_url} : $r->{clone_url};
 	my $dir_repo;
 	if ($repo =~ m/([^\/]+)$/) { # take the last part of path
 		$dir_repo = $1;
