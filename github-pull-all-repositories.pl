@@ -86,8 +86,9 @@ foreach my $r (@{ $ginfo }) {
 
 	chdir $cwd || die "Can't change directory: $!";
 	
-	if (-d $dir_repo) {
-		chdir "$cwd/$repo";
+	if (-d $dir_repo and -d "$dir_repo/.git" and -f "$dir_repo/.git/config") {
+		print "\tgit pull\n";
+		chdir "$cwd/$dir_repo" or die "Can't chdir to '$cwd/$dir_repo'";
 		system(qw( git pull ));
 	}
 	elsif ($dir_repo =~ m/^[a-z0-9_:\.\/-]+$/i && $dir_repo !~ m(/\.\./) ) {
