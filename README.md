@@ -8,6 +8,11 @@ mkdir -p ~/work/company/git && cd ~/work/company/git
 echo git.company.com > REPO
 ~/bin/gitolite-pull-all-repositories.pl
 ```
+### gitolite-fetch-all-repositories.pl
+The same as `gitolite-pull-all-repositories.pl` but do `fetch` instead of `pull` - fetch all repositories
+
+### gitolite-mirror-all-repositories.pl
+[Gitolite](http://gitolite.com/) has a great mirroring function. Sometimes you need to mirror all repositories to your slave/backup server.
 
 ### github-pull-all-repositories.pl
 
