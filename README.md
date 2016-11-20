@@ -36,6 +36,44 @@ echo github.com:lhost > REPO
 
 Simple script to pull all already-cloned repositores in current directory. Search for all .git subdirectories up to level 4.
 
+### git-status.pl
+
+Search for git repositories in specified directories and export this information as JSON:
+
+```bash
+./github.com-lhost/scripts-git/git-status.pl ./github.com-lhost/scripts-git
+```
+```json
+{
+   "./github.com-lhost/scripts-git" : {
+      "." : {
+         "branch" : "master",
+         "branches" : {
+            "master" : {
+               "default" : 1,
+               "desc" : "Do fetch insteead of pull",
+               "sha1" : "7bcb147ffdc19e4cb8e2218880554eabdc1f555a"
+            },
+            "remotes/origin/HEAD" : {
+               "default" : 0,
+               "desc" : "origin/master",
+               "sha1" : "->"
+            },
+            "remotes/origin/master" : {
+               "default" : 0,
+               "desc" : "Do fetch insteead of pull",
+               "sha1" : "7bcb147ffdc19e4cb8e2218880554eabdc1f555a"
+            }
+         },
+         "remotes" : {
+            "origin" : "https://github.com/lhost/scripts-git.git"
+         },
+         "rev" : "7bcb147ffdc19e4cb8e2218880554eabdc1f555a"
+      }
+   }
+}
+```
+
 ### bootstrap.sh
 
 Simle installation script
