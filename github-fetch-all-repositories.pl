@@ -3,7 +3,7 @@
 #
 # github-pull-all-repositories.pl
 #
-# Developed by Lubomir Host 'rajo' <lubomir.host@gmail.com>
+# Developed by Lubomir Host <lubomir.host@gmail.com>
 # Licensed under terms of GNU General Public License.
 # All rights reserved.
 #
@@ -113,6 +113,5 @@ foreach my $r (@{ $ginfo }) {
 	}
 }
 
-# vim: ts=4
-# vim600: fdm=marker fdl=0 fdc=3
+# vim: ts=4 fdm=marker fdl=0 fdc=3
 

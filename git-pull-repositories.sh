@@ -3,7 +3,7 @@
 #
 # git-pull-repositories.sh
 #
-# Developed by Lubomir Host 'rajo' <lubomir.host@gmail.com>
+# Developed by Lubomir Host <lubomir.host@gmail.com>
 # Licensed under terms of GNU General Public License.
 # All rights reserved.
 #

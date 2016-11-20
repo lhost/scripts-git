@@ -3,7 +3,7 @@
 #
 # gitolite-fetch-all-repositories.pl
 #
-# Developed by Lubomir Host 'rajo' <lubomir.host@gmail.com>
+# Developed by Lubomir Host <lubomir.host@gmail.com>
 # Licensed under terms of GNU General Public License.
 # All rights reserved.
 #
@@ -65,6 +65,5 @@ foreach my $repo (sort keys %{$ginfo->{repos}}) {
 	system('/usr/bin/ssh', $git_repo, 'mirror', 'push', $ARGV[0], $repo);
 }
 
-# vim: ts=4
-# vim600: fdm=marker fdl=0 fdc=3
+# vim: ts=4 fdm=marker fdl=0 fdc=3
 
