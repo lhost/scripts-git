@@ -101,7 +101,7 @@ foreach my $r (@{ $ginfo }) {
 	if (-d $dir_repo and -d "$dir_repo/.git" and -f "$dir_repo/.git/config") {
 		print "\tgit pull\n";
 		chdir "$cwd/$dir_repo" or die "Can't chdir to '$cwd/$dir_repo'";
-		system(qw( git pull ));
+		system(qw( git fetch ));
 	}
 	elsif ($dir_repo =~ m/^[a-z0-9_:\.\/-]+$/i && $dir_repo !~ m(/\.\./) ) {
 		mkdir "$dir_repo" || die "Can't create directory: $!";
