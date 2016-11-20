@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
 #
-# github-pull-all-repositories.pl
+# github-fetch-all-repositories.pl
 #
 # Developed by Lubomir Host <lubomir.host@gmail.com>
 # Licensed under terms of GNU General Public License.
@@ -99,7 +99,7 @@ foreach my $r (@{ $ginfo }) {
 	chdir $cwd || die "Can't change directory: $!";
 	
 	if (-d $dir_repo and -d "$dir_repo/.git" and -f "$dir_repo/.git/config") {
-		print "\tgit pull\n";
+		print "\tgit fetch\n";
 		chdir "$cwd/$dir_repo" or die "Can't chdir to '$cwd/$dir_repo'";
 		system(qw( git fetch ));
 	}
