@@ -67,7 +67,7 @@ foreach my $repo (sort keys %{$ginfo->{repos}}) {
 		chdir "$cwd/$repo";
 		system(qw( git fetch --all ));
 	}
-	elsif ($repo =~ m/^[a-z0-9_:\.\/-\+]+$/i  && $repo !~ m(/\.\./) ) {
+	elsif ($repo =~ m/^[a-z0-9_:\.\/\+-]+$/i  && $repo !~ m(/\.\./) ) {
 		mkdir "$repo" || die "Can't create directory: $!";
 		print "\tMISSING\n";
 		system(qw( git clone ), "$git_repo:$repo", "$repo");
