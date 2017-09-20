@@ -77,7 +77,7 @@ my $ginfo = from_json($git_json);
 my $cwd = getcwd();
 
 foreach my $r (@{ $ginfo }) {
-	print Dumper($r);
+	#print Dumper($r);
 	my $repo = ($protocol eq 'ssh') ? "$hostname:$r->{path_with_namespace}" : $r->{http_url_to_repo};
 	my $dir_repo;
 	if ($repo =~ m/([^\/]+)$/) { # take the last part of path
