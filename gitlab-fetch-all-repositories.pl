@@ -62,21 +62,41 @@ my $git_json;
 my $ua = LWP::UserAgent->new;
 $ua->env_proxy; # take proxy setup from environment
 
-# make HTTP request: curl -i https://gitlab.your.company.com/api/v4/projects | less -S
-my $response = $ua->get("http://$hostname/api/v4/projects");
-if ($response->is_success) {
-	$git_json = $response->decoded_content;  # or whatever
-}
-else {
-	die $response->status_line;
+my $page = 1;
+my @all_ginfo = ();
+while (1) {
+	# https://docs.gitlab.com/ee/api/README.html#pagination-link-header
+	# See HTTP Headers in response:
+	# X-Next-Page: 
+	# X-Page: 4
+	# X-Per-Page: 20
+	# X-Prev-Page: 3
+	# X-Total: 23
+	# X-Total-Pages: 2
+
+	# make HTTP request: curl -i https://gitlab.your.company.com/api/v4/projects | less -S
+	print "Downloading page #$page\n";
+	my $response = $ua->get("http://$hostname/api/v4/projects?page=$page&per_page=10");
+	if ($response->is_success) {
+		$git_json = $response->decoded_content;  # or whatever
+	}
+	else {
+		die $response->status_line;
+	}
+
+	#print Dumper($git_json, from_json($git_json));
+	my $ginfo = from_json($git_json);
+
+	last if (scalar(@{$ginfo}) == 0); # TODO: last page is emmpty, ignore HTTP Headers
+	$page++;
+	push @all_ginfo, @{ $ginfo };
 }
 
-#print Dumper($git_json, from_json($git_json));
-my $ginfo = from_json($git_json);
+print "Projects: " . scalar(@all_ginfo) . "\n";
 
 my $cwd = getcwd();
 
-foreach my $r (@{ $ginfo }) {
+foreach my $r (@all_ginfo) {
 	#print Dumper($r);
 	my $repo = ($protocol eq 'ssh') ? "$hostname:$r->{path_with_namespace}" : $r->{http_url_to_repo};
 	my $dir_repo;
