@@ -2,7 +2,7 @@
 
 ### gitlab-fetch-all-repositories.pl
 
-Simple Perl script to pull all repositories from your [https://about.gitlab.com/](Gitlab) server.
+Simple Perl script to pull all repositories from your [Gitlab](https://about.gitlab.com/) server.
 
 ```bash
 mkdir -p ~/work/company/git && cd ~/work/company/git
