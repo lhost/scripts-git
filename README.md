@@ -3,6 +3,16 @@
 ### git gone
 
 Remove stale local branches with where removed on remote server
+
+Installation:
+```
+dir=`pwd`
+git clone github.com/lhost/scripts-git
+cd ~/bin && ln -s $dir/scripts-git/git-gone
+```
+
+'git some-usefull-command' will execute 'git-some-usefull-command' found in your $PATH
+
 ```
 cd ~/your/git/repository
 git gone
