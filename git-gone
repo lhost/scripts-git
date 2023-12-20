@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# remove local branches removed on remote git server
+
+for rmt in `git remote`; do
+	git fetch --prune --prune-tags $rmt \
+		&& git branch -vv \
+		| awk '/: gone]/{print $1}' \
+		| xargs --no-run-if-empty git branch -D ;
+done
+
+git pull
+

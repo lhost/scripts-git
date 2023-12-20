@@ -1,5 +1,16 @@
 # Description
 
+### git gone
+
+Remove stale local branches with where removed on remote server
+```
+cd ~/your/git/repository
+git gone
+From github.com/lhost/scripts-git
+ - [deleted]         (none)     -> origin/old-branch-1
+ - [deleted]         (none)     -> origin/some_feature_branch
+```
+
 ### gitlab-fetch-all-repositories.pl
 
 Simple Perl script to pull all repositories from your [Gitlab](https://about.gitlab.com/) server.
